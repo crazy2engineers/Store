@@ -13,7 +13,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 12000000 }}));
+app.use(session({ secret: 'keyboard cat', cookie: { maxAge: 16000000 }}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
