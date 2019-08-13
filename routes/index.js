@@ -262,7 +262,7 @@ router.post('/today_inc', function (req, res, next) {
     if (err) {
       console.log("Error in Insert Record" + err);
     } else {
-      res.redirect('/');
+      res.redirect('/index');
     }
   })
 
