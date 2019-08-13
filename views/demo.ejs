@@ -52,6 +52,7 @@ hr {
   <div class="middle">
     
     <h1>Website On Maintenance</h1>
+     <h1 id="days"></h1>
     <h1 id="demo" style="font-size:40px;"></h1>
     <hr>
   </div>
@@ -80,7 +81,8 @@ var countdownfunction = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
   
   // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  document.getElementById("days").innerHTML = days+"Days";
+  document.getElementById("demo").innerHTML = hours + "h "
   + minutes + "m " + seconds + "s ";
   
   // If the count down is over, write some text 
