@@ -457,7 +457,7 @@ if(!mysession){
 
 
 router.get('/', function(req, res, next) {
-  res.render('Admin', { title: 'Express' });
+  res.render('demo', { title: 'Express' });
 });
 router.get('/signup', function(req, res, next) {
   res.render('signup', { title: 'Express' });
