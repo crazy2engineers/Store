@@ -245,9 +245,9 @@
                                                                 <td><%= moment(purchase_view[i].date).format( 'DD-MMM-YYYY')  %></td> 
                                                                 <% if(purchase_view[i].dis=="dis" ){%>
                                                                     
-                                                                    <td style="color: green"><span class="glyphicon glyphicon-ok"></span></td>
+                                                                    <td style="color: green"><img src="images/check.png"/> </td>
                                                                     <%}else{%>
-                                                                        <td style="color: red"><span  class="glyphicon glyphicon-remove"></span></td>
+                                                                        <td style="color: red"><img src="images/cancel.png"/></td>
                                                                         <%}%>
                                                                       
                                                                 <td><%= purchase_view[i].purchase_amount %></td>
