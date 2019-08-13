@@ -429,7 +429,7 @@ if(!mysession){
 
 //delete today_income
 
-router.get('/today_inc/:id', function(req, res, next) {
+router.get('/today_inc_delete/:id', function(req, res, next) {
   var mysession = req.session.email;
 if(!mysession){
   res.redirect('/');
