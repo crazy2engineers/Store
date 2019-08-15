@@ -3,6 +3,7 @@
    
 
 <%- include('header.ejs'); -%>
+
 <div class=" content-area" >
     <div class="page-header">
         <h4 class="page-title">Crazy2Engineers</h4>
@@ -21,15 +22,18 @@
         <form  method="POST" action="/Supplier_add" ref='uploadForm' id='uploadForm'  >
           <div class="form-group">
             <label class="form-label" for="exampleInputEmail1">Supplier  Name</label>
-            <input type="text" class="form-control"  name="supplier_name" id="exampleInputname"  placeholder="Enter Name" required>
+            <input type="text" class="form-control"  name="supplier_name" id="exampleInputname"  placeholder="Enter Name"  pattern="[a-z]{3,15}"
+            title="Username should only contain lowercase letters 3-15. e.g. hardik" required>
           </div>
           <div class="form-group">
             <label class="form-label" for="exampleInputEmail1">Supplier Place</label>
-            <input type="text" class="form-control"  name="supplierp_place" id="exampleInputname"  placeholder="Enter place" required>
+            <input type="text" class="form-control"  name="supplierp_place" id="exampleInputname"  placeholder="Enter place"  pattern="[a-z]{3,15}"
+            title="Username should only contain lowercase letters 3-15. e.g. palanpur" required>
           </div>
           <div class="form-group">
             <label class="form-label" for="exampleInputEmail1">Contact Num</label>
-            <input type="text" class="form-control"  name="supplier_contact" id="exampleInputname"  placeholder="Enter Number" required>
+            <input type="text" class="form-control"  name="supplier_contact" id="exampleInputname"  placeholder="Enter Number"  pattern="[1-9]{10}"
+            title="Username should only contain Number of 10 digit. e.g. 1234567890" required>
           </div>
           
           <div class="form-group mb-0">
@@ -40,10 +44,7 @@
         </form>
       </div>
     </div>
-    <script type="text/javascript">
-
-      $( "#uploadForm" ).validate( { });
-  </script>
+  
   </div>
 
 
