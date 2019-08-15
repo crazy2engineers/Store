@@ -69,15 +69,16 @@
                                 <div class="card-title text-center text-dark">Create New Account</div>
                                 <div class="form-group">
                                     <label class="form-label text-dark">Name</label>
-                                    <input type="text" class="form-control" name="Admin_name" placeholder="Enter name">
+                                    <input type="text" class="form-control" name="Admin_name" placeholder="Enter name" pattern="[a-z]{3,15}"
+                                    title="Username should only contain lowercase letters 3-15. e.g. hardik" required> 
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label text-dark">Email address</label>
-                                    <input type="email" class="form-control" name="Admin_email" placeholder="Enter email">
+                                    <input type="email" class="form-control" name="Admin_email" placeholder="Enter email" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label text-dark">Password</label>
-                                    <input type="password" class="form-control" name="Admin_password" placeholder="Password">
+                                    <input type="password" class="form-control" name="Admin_password" placeholder="Password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" title="Password :UpperCase, LowerCase, Number/SpecialChar and min 8 Chars e.g Hardik@1" required>
                                 </div>
                                 <div class="form-group">
                                     <label class="custom-control custom-checkbox">
