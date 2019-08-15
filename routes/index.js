@@ -361,7 +361,7 @@ if(!mysession){
   else{
 
     console.log("hardik");
-    res.render('purchase_list',{  purchase_view : data, moment: moment });
+    res.render('Purchase_list',{  purchase_view : data, moment: moment });
   }
 
 });
