@@ -41,7 +41,8 @@
           </div>
           <div class="form-group">
             <label class="form-label" for="exampleInputEmail1">Amount</label>
-            <input type="text" class="form-control"  name="today_inc_amount" id="exampleInputname"  placeholder="Enter place" required>
+            <input type="text" class="form-control"  name="today_inc_amount" id="exampleInputname"  placeholder="Enter place" placeholder="Enter Amount" pattern="[1-9]{1,10}"
+            title="Username should only contain Number. e.g. 1234567890" required>
           </div>
           
           
@@ -53,10 +54,6 @@
         </form>
       </div>
     </div>
-    <script type="text/javascript">
-
-      $( "#uploadForm" ).validate( { });
-  </script>
   </div>
 
 
