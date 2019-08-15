@@ -162,60 +162,76 @@ if(!mysession){
   });
 });
 router.post('/purchase_add', function (req, res, next) {
+ 
   console.log("hardik?????????????????????????????????????????????????????????????????????");
-  console.log(req.body);
-  console.log("paid ====="+req.body.pay);
-if(req.body.pay=="paid"){
+  var supplier_id= req.body.supplier_name;
+  supplier.findById(supplier_id,function(err,supplier_array){
 
-  const mybodydata = {
-    supplier: req.body.supplier_name,
-    supplierp_place: req.body.supplierp_place,
-    purchase_billno: req.body.purchase_billno,
-    date: req.body.date,
-    pay:req.body.pay,
-    dis:req.body.dis,
-    pay_recno: "enter number",
-    purchase_amount: req.body.purchase_amount,
-    purchase_unpaidamount:"0",
-    
-  }
-  var data = purchase(mybodydata);
-
-  data.save(function (err) {
-    if (err) {
-      console.log("Error in Insert Record" + err);
-    } else {
-      res.redirect('/purchase_view');
+    if(err){
+      console.log(err);
     }
+    else{
+    console.log("????????????????????????????"+supplier_array.supplier_name);
+
+
+    console.log("paid ====="+req.body.pay);
+    if(req.body.pay=="paid"){
+    
+      const mybodydata = {
+        supplier_name:supplier_array.supplier_name,
+        supplierp_place: req.body.supplierp_place,
+        purchase_billno: req.body.purchase_billno,
+        date: req.body.date,
+        pay:req.body.pay,
+        dis:req.body.dis,
+        pay_recno: "enter number",
+        purchase_amount: req.body.purchase_amount,
+        purchase_unpaidamount:"0",
+        
+      }
+      var data = purchase(mybodydata);
+    
+      data.save(function (err) {
+        if (err) {
+          console.log("Error in Insert Record" + err);
+        } else {
+          res.redirect('/purchase_view');
+        }
+      })
+    
+    
+    }else{
+      const mybodydata = {
+        supplier_name: supplier_array.supplier_name,
+        supplierp_place: req.body.supplierp_place,
+        purchase_billno: req.body.purchase_billno,
+        date: req.body.date,
+        pay:req.body.pay,
+        dis:req.body.dis,
+        pay_recno: "enter number",
+        purchase_amount: req.body.purchase_amount,
+        purchase_unpaidamount:req.body.purchase_amount,
+        
+      }
+      var data = purchase(mybodydata);
+    
+      data.save(function (err) {
+        if (err) {
+          console.log("Error in Insert Record" + err);
+        } else {
+          res.redirect('/purchase_view');
+        }
+      })
+    
+    
+    
+    }
+    }
+
   })
 
 
-}else{
-  const mybodydata = {
-    supplier: req.body.supplier_name,
-    supplierp_place: req.body.supplierp_place,
-    purchase_billno: req.body.purchase_billno,
-    date: req.body.date,
-    pay:req.body.pay,
-    dis:req.body.dis,
-    pay_recno: "enter number",
-    purchase_amount: req.body.purchase_amount,
-    purchase_unpaidamount:req.body.purchase_amount,
-    
-  }
-  var data = purchase(mybodydata);
-
-  data.save(function (err) {
-    if (err) {
-      console.log("Error in Insert Record" + err);
-    } else {
-      res.redirect('/purchase_view');
-    }
-  })
-
-
-
-}
+  
   //Create an Array 
  
 });
@@ -225,19 +241,18 @@ router.get('/purchase_view', function(req, res, next) {
 if(!mysession){
   res.redirect('/');
 }
-  purchase.find(function(err, data){
-        
-    console.log(data);
-    if (err) res.json({message: 'There are no posts here.'});
-    purchase.find({})
-    .populate('supplier')
-    .exec(function(err, data) {
-      console.log(data);
-      console.log("hardik");
-      res.render('purchase_view',{  purchase_view : data, moment: moment });
 
-    })   
-  });
+   purchase.find(function(err, data){
+        if(err){
+          console.log(err);
+        }
+        else{
+
+          console.log("hardik");
+          res.render('purchase_view',{  purchase_view : data, moment: moment });
+        }
+
+    });
 });
 router.get('/today_inc', function(req, res, next) {
   var mysession = req.session.email;
@@ -339,19 +354,17 @@ router.get('/Purchase_list', function(req, res, next) {
 if(!mysession){
   res.redirect('/');
 }
-  purchase.find(function(err, data){
-        
-    console.log(data);
-    if (err) res.json({message: 'There are no posts here.'});
-    purchase.find({})
-    .populate('supplier')
-    .exec(function(err, data) {
-      console.log(data);
-      console.log("hardik");
-      res.render('Purchase_list',{  purchase_view : data, moment: moment });
+ purchase.find(function(err, data){
+  if(err){
+    console.log(err);
+  }
+  else{
 
-    })   
-  });
+    console.log("hardik");
+    res.render('purchase_list',{  purchase_view : data, moment: moment });
+  }
+
+});
 
 
 
