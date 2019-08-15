@@ -470,7 +470,7 @@ if(!mysession){
 
 
 router.get('/', function(req, res, next) {
-  res.render('demo', { title: 'Express' });
+  res.render('Admin', { title: 'Express' });
 });
 router.get('/signup', function(req, res, next) {
   res.render('signup', { title: 'Express' });
