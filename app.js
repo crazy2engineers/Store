@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb+srv://crazy2engineers:crazy2@123@crazy2engineers-dabxd.mongodb.net/test?retryWrites=true&w=majority',{useNewUrlParser: true})
+mongoose.connect('mongodb+srv://crazy2engineers:crazy2@123@crazy2engineers-dabxd.mongodb.net/hardik?retryWrites=true&w=majority',{useNewUrlParser: true})
 .then(() => console.log('connection succesful'))
 .catch((err) => console.error(err))
 // catch 404 and forward to error handler
