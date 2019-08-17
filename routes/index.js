@@ -206,6 +206,7 @@ router.post('/purchase_add', function (req, res, next) {
         supplierp_place: req.body.supplierp_place,
         purchase_billno: req.body.purchase_billno,
         date: req.body.date,
+        pay_date:"",
         pay:req.body.pay,
         dis:req.body.dis,
         pay_recno: "enter number",
