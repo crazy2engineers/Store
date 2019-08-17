@@ -12,6 +12,7 @@ var mysession = req.session.email;
 if(!mysession){
   res.redirect('/');
 }
+  AdminsModel.findById(req.session.userid,function(err,db_user_array){
   purchase.find(function(err,purchase){
     supplier.find(function(err,supplier){
       today_inc.find(function(err,today_inc){
@@ -21,13 +22,13 @@ if(!mysession){
         else{
           
          
-          res.render('index',{  purchase : purchase,supplier:supplier,today_inc:today_inc});
+          res.render('index',{ user_array: db_user_array, purchase : purchase,supplier:supplier,today_inc:today_inc});
         
         }
       });  
     });
   });
-  
+  }); 
 });
 router.get('/supplier_add', function(req, res, next) {
   var mysession = req.session.email;
@@ -110,6 +111,7 @@ router.get('/supplier_view', function(req, res, next) {
 if(!mysession){
   res.redirect('/');
 }
+  AdminsModel.findById(req.session.userid,function(err,db_user_array){
   supplier.find(function(err,data){
   
     if(err){
@@ -118,10 +120,10 @@ if(!mysession){
     else{
       console.log(data);
       
-      res.render('supplier_view',{  supplier_view : data});
+      res.render('supplier_view',{ user_array: db_user_array, supplier_view : data});
     
     }
-
+  });
   });
 });
 router.get('/purchase_add', function(req, res, next) {
@@ -242,7 +244,7 @@ router.get('/purchase_view', function(req, res, next) {
 if(!mysession){
   res.redirect('/');
 }
-
+AdminsModel.findById(req.session.userid,function(err,db_user_array){
    purchase.find(function(err, data){
         if(err){
           console.log(err);
@@ -250,9 +252,9 @@ if(!mysession){
         else{
 
           console.log("hardik");
-          res.render('purchase_view',{  purchase_view : data, moment: moment });
+          res.render('purchase_view',{user_array: db_user_array,  purchase_view : data, moment: moment });
         }
-
+   });
     });
 });
 router.get('/today_inc', function(req, res, next) {
@@ -290,6 +292,7 @@ router.get('/today_inc_view', function(req, res, next) {
 if(!mysession){
   res.redirect('/');
 }
+  AdminsModel.findById(req.session.userid,function(err,db_user_array){
   today_inc.find(function(err,data){
   
     if(err){
@@ -298,10 +301,10 @@ if(!mysession){
     else{
       console.log(data);
       
-      res.render('today_inc_view',{  today_inc_view : data,moment: moment});
+      res.render('today_inc_view',{user_array: db_user_array,  today_inc_view : data,moment: moment});
     
     }
-
+  });
   });
 
 });
@@ -355,6 +358,7 @@ router.get('/Purchase_list', function(req, res, next) {
 if(!mysession){
   res.redirect('/');
 }
+  AdminsModel.findById(req.session.userid,function(err,db_user_array){
  purchase.find(function(err, data){
   if(err){
     console.log(err);
@@ -362,9 +366,9 @@ if(!mysession){
   else{
 
     console.log("hardik");
-    res.render('Purchase_list',{  purchase_view : data, moment: moment });
+    res.render('Purchase_list',{ user_array: db_user_array, purchase_view : data, moment: moment });
   }
-
+ });
 });
 
 
@@ -628,6 +632,7 @@ router.post('/loginprosee', function(req, res, next) {
       res.render("admin");
     }
     else if (db_email == email && db_password == password) {
+        req.session.userid=db_users_array._id;
       req.session.email = db_email;
       console.log("hardik");
       res.redirect('/index');
