@@ -88,11 +88,11 @@
           <div class="form-group">
             <label>Pay</label><br>
             <label>
-              <input type="radio" name="pay" value="paid">
+              <input type="radio" name="pay" id="paid" onclick=" myFunction()"  value="paid">
               Paid
             </label>
             <label>
-              <input type="radio" name="pay" value="unpaid">
+              <input type="radio" name="pay" id="unpaid" onclick=" myFunction1()" value="unpaid">
               Unpaid
             </label>
           </div>
@@ -130,8 +130,40 @@
           xhttp.open("GET", "supplierp_place?q=" + str, true);
           xhttp.send();
         }
+        
       </script>
-
+<script>
+ function myFunction() {
+    var x = document.getElementById("paid").value;
+   
+  console.log(x);
+ 
+    if(x=="paid" ){
+      document.getElementById("demo").innerHTML = ` <div class="form-group">
+            <label class="form-label" for="exampleInputEmail1">Res_no</label>
+            <input type="text" class="form-control" name="pay_recno" id="exampleInputname"
+              placeholder="Enter Number" pattern="[1-9]{1,10}"
+              title="Username should only contain Number . e.g. 1234567890" required >
+          </div> `;
+    }
+  
+  }
+  function myFunction1() {
+    var x = document.getElementById("unpaid").value;
+   
+  console.log(x);
+ 
+    if(x=="unpaid" ){
+      document.getElementById("demo").innerHTML = ` <div class="form-group">
+            <label class="form-label" for="exampleInputEmail1">Res_no</label>
+            <input type="text" class="form-control" name="pay_recno" id="exampleInputname"
+              placeholder="Enter Number" pattern="[1-9]{1,10}"
+              title="Username should only contain Number . e.g. 1234567890" required disabled>
+          </div> `;
+    }
+  
+  }
+</script>
   </div>
 
 
