@@ -35,7 +35,20 @@ router.get('/supplier_add', function(req, res, next) {
 if(!mysession){
   res.redirect('/');
 }
-  res.render('supplier_add', {  });
+  
+  UsersModel.findById(req.session.userid,function(err,db_user_array){
+
+    console.log(req.session.userid);
+    if(err){
+      console.log("Error is Single Recode Fetch "+err);
+    }
+    else{
+      console.log(db_user_array);
+      res.render('supplier_add',{user_array: db_user_array});
+    }
+  
+  });
+  
 });
 router.post('/Supplier_add', function (req, res, next) {
   console.log(req.body);
@@ -127,8 +140,8 @@ if(!mysession){
   });
 });
 router.get('/purchase_add', function(req, res, next) {
-
-  supplier.find(function(err,data){
+ UsersModel.findById(req.session.userid,function(err,db_user_array){
+ supplier.find(function(err,data){
   
     if(err){
       console.log("Error In  Fetch Data " + err)
@@ -136,10 +149,10 @@ router.get('/purchase_add', function(req, res, next) {
     else{
       console.log(data);
       
-      res.render('purchase_add',{  supplier_view : data});
+      res.render('purchase_add',{ user_array: db_user_array, supplier_view : data});
     
     }
-
+ });
   });
 });
 router.get('/supplierp_place', function(req, res, next) {
@@ -262,7 +275,20 @@ router.get('/today_inc', function(req, res, next) {
 if(!mysession){
   res.redirect('/');
 }
-  res.render('today_inc', {  });
+  
+  UsersModel.findById(req.session.userid,function(err,db_user_array){
+
+    console.log(req.session.userid);
+    if(err){
+      console.log("Error is Single Recode Fetch "+err);
+    }
+    else{
+      console.log(db_user_array);
+      res.render('today_inc',{user_array: db_user_array});
+    }
+  
+  });
+
 });
 
 router.post('/today_inc', function (req, res, next) {
@@ -379,7 +405,19 @@ router.get('/report', function(req, res, next) {
 if(!mysession){
   res.redirect('/');
 }
-  res.render('report', {  });
+  
+  UsersModel.findById(req.session.userid,function(err,db_user_array){
+
+    console.log(req.session.userid);
+    if(err){
+      console.log("Error is Single Recode Fetch "+err);
+    }
+    else{
+      console.log(db_user_array);
+      res.render('report',{user_array: db_user_array});
+    }
+  
+  });
 });
 router.get('/pay/:id', function(req, res, next) {
  var mysession = req.session.email;
