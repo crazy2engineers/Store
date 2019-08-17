@@ -184,7 +184,7 @@ router.post('/purchase_add', function (req, res, next) {
         date: req.body.date,
         pay:req.body.pay,
         dis:req.body.dis,
-        pay_recno: "enter number",
+        pay_recno: req.body.pay_recno,
         purchase_amount: req.body.purchase_amount,
         purchase_unpaidamount:"0",
         
