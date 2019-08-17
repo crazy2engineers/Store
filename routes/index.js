@@ -36,7 +36,7 @@ if(!mysession){
   res.redirect('/');
 }
   
-  UsersModel.findById(req.session.userid,function(err,db_user_array){
+  AdminsModel.findById(req.session.userid,function(err,db_user_array){
 
     console.log(req.session.userid);
     if(err){
@@ -140,7 +140,7 @@ if(!mysession){
   });
 });
 router.get('/purchase_add', function(req, res, next) {
- UsersModel.findById(req.session.userid,function(err,db_user_array){
+ AdminsModel.findById(req.session.userid,function(err,db_user_array){
  supplier.find(function(err,data){
   
     if(err){
@@ -276,7 +276,7 @@ if(!mysession){
   res.redirect('/');
 }
   
-  UsersModel.findById(req.session.userid,function(err,db_user_array){
+  AdminsModel.findById(req.session.userid,function(err,db_user_array){
 
     console.log(req.session.userid);
     if(err){
@@ -406,7 +406,7 @@ if(!mysession){
   res.redirect('/');
 }
   
-  UsersModel.findById(req.session.userid,function(err,db_user_array){
+  AdminsModel.findById(req.session.userid,function(err,db_user_array){
 
     console.log(req.session.userid);
     if(err){
