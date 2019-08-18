@@ -223,7 +223,7 @@
                                                                     <td><%= supplier_view[i].supplier_name %></td>
                                                                     <td><%= supplier_view[i].supplierp_place %></td>
                                                                     <td><%= supplier_view[i].supplier_contact %></td>
-                                                                    <td><a href='supplier_view/<%= supplier_view[i]._id %>' style="padding: 5px;" >delete </a></td>
+                                                                    <td><a href='supplier_view/<%= supplier_view[i]._id %>' class="delete"><button type="button" class="btn btn-dark m-1">Delete</button> </a></td>
                                                         
                                                         
                                                                   </tr>
@@ -308,6 +308,10 @@
 $('#Print').on('click',function(){
 printData();
 })
+
+$('.delete').click(function () {
+    return confirm("Are you sure you want to delete?");
+});
 		</script>
 
 
