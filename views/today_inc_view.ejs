@@ -222,7 +222,7 @@
                                                                   <td><%= i+1 %></td>
                                                                   <td><%= moment( today_inc_view[i].today_inc_date ).format( 'DD-MMM-YYYY')  %> </td>
                                                                   <td><%= today_inc_view[i].today_inc_amount %><input type="text" value="<%= today_inc_view[i].today_inc_amount %>" name="qty1" id="qty" hidden/></td>
-                                                              <td><a href='today_inc_delete/<%= today_inc_view[i]._id %>' ><button type="button" class="btn btn-dark m-1">Delete</button> </a></td>
+                                                              <td><a href='today_inc_delete/<%= today_inc_view[i]._id %>' class="delete" ><button type="button" class="btn btn-dark m-1">Delete</button> </a></td>
                                                              
                                                               
                                                       
@@ -335,6 +335,10 @@ printData();
 		 
 		 result.innerHTML = sum;
 	 }
+	 
+	 $('.delete').click(function () {
+    return confirm("Are you sure you want to delete?");
+});
 		 </script>
 
 	</body>
