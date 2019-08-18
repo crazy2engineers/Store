@@ -238,9 +238,9 @@
                                                                             <%}%>
                                                                     <% if(purchase_view[i].purchase_unpaidamount=="0"){%>
                                                                         
-                                                                        <td><button type="button" class="btn btn-success m-1">Success</button><a href='delet/<%= purchase_view[i]._id %>' ><button type="button" class="btn btn-dark m-1">Delete</button> </a></td>
+                                                                        <td><button type="button" class="btn btn-success m-1">Success</button><a href='delet/<%= purchase_view[i]._id %>' class="delete" ><button type="button" class="btn btn-dark m-1">Delete</button> </a></td>
                                                                         <%}else{%>
-                                                                            <td> <a href="Pay/<%= purchase_view[i]._id %>"  ><button type="button" class="btn btn-danger m-1" >Pay Now</button></a><a href='delet/<%= purchase_view[i]._id %>' ><button type="button" class="btn btn-dark m-1">Delete</button> </a></td>
+                                                                            <td> <a href="Pay/<%= purchase_view[i]._id %>"  ><button type="button" class="btn btn-danger m-1" >Pay Now</button></a><a href='delet/<%= purchase_view[i]._id %>' class="delete" ><button type="button" class="btn btn-dark m-1">Delete</button> </a></td>
                                                                             <%}%>
                                                                 
                                                                
@@ -328,6 +328,10 @@
 $('#Print').on('click',function(){
 printData();
 })
+
+$('.delete').click(function () {
+    return confirm("Are you sure you want to delete?");
+});
 		</script>
 
 
