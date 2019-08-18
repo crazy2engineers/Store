@@ -425,15 +425,16 @@ if(!mysession){
   res.redirect('/');
 }
         
-   
+    AdminsModel.findById(req.session.userid,function(err,db_user_array){
     purchase.findById(req.params.id,function(err, data){})
     .populate('supplier')
     .exec(function(err, data) {
       console.log(data);
       console.log("hardik!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-      res.render('pay', {  pay : data});
+      res.render('pay', {user_array: db_user_array,   pay : data});
 
-    })   
+    }) 
+    });
   });
 
 
@@ -467,6 +468,7 @@ router.get('/pay_view', function(req, res, next) {
 if(!mysession){
   res.redirect('/');
 }
+   AdminsModel.findById(req.session.userid,function(err,db_user_array){
   pay.find(function(err, data){
         
     console.log(data);
@@ -476,9 +478,10 @@ if(!mysession){
     .exec(function(err, data) {
       console.log(data);
       console.log("hardik");
-      res.render('pay_view',{  pay_view : data});
+      res.render('pay_view',{ user_array: db_user_array,   pay_view : data});
 
-    })   
+    })
+  });
   });
 });
 
